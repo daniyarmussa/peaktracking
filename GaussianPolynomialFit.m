@@ -5,9 +5,9 @@ function [EstimatedBraggWavelength] = GaussianPolynomialFit(Reflectivity, lambda
 	%Reflectivity =~ A * exp( -(lambda-lambda0)^2 / (2*sigma^2) );
 	% the fitting is been done by a polyfit() the lan of the data.
 	
-	Reflectivity_log = log(Reflectivity);
-	Reflectivity_polynomial = polyfit(lambda, Reflectivity_log, 2);
-	a2 = Reflectivity_polynomial(1:1);
+	Reflectivity = log(Reflectivity);
+	Reflectivity_polynomial = polyfit(lambda, Reflectivity, 2);
+	a2 = Reflectivity_polynomial(1);
 	a1 = Reflectivity_polynomial(2);
 	a0 = Reflectivity_polynomial(3);
 	

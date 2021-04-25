@@ -12,10 +12,10 @@ function [EstimatedBraggWavelength] = HigherOrderPolynomial(Reflectivity, lambda
 	Reflectivity_polynomial = poly2sym(Reflectivity_polynomial_coef,x);
 	%Find the extrema of polynomial to find the optimal maximum point
     g = diff(Reflectivity_polynomial,x); %derivative
+    %extremum point
     extrema = vpa(solve(g == 0, x));
-    %find the index of max value of polynomial
-	index = extrema(1,:);
+    
 	
 	%the Estimated Bragg wavelength
-	EstimatedBraggWavelength = lambda(index);
+	EstimatedBraggWavelength = extrema(1,:);
 end
